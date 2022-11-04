@@ -1,4 +1,3 @@
-# THe courses taken along 
 # CSCI240 <br />
 Computer Programming in C++ with Amy Byrnes
 
