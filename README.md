@@ -1,9 +1,9 @@
 # NIU school
  
-CSCI240
+# CSCI240 <br />
 Computer Programming in C++ with Amy Byrnes
 
-CSCI241
+# CSCI241 <br />
 Intermediate Programming in C++ with Kurt McMahom
 
 CSCI330
