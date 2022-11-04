@@ -1,2 +1,16 @@
 # NIU school
- This is a collection of the code I completed while at NIU
+ 
+CSCI240
+Computer Programming in C++ with Amy Byrnes
+
+CSCI241
+Intermediate Programming in C++ with Kurt McMahom
+
+CSCI330
+UNIX and Network Programming with Raimund Ege
+
+CSCI340
+Data Structures and Algorithm Analysis with Jie Zhou
+
+CSCI466
+MSTR Databases with Jon Lehuta
