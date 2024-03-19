@@ -8,7 +8,7 @@ Intermediate Programming in C++ with Kurt McMahom
 UNIX and Network Programming with Raimund Ege
 
 # CSCI340 <br />
-Data Structures and Algorithm Analysis with
+Data Structures and Algorithm Analysis with Jon Lehuta
 
 # CSCI466 <br />
 MSTR Databases with Jon Lehuta
