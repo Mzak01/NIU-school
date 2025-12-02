@@ -1,0 +1,68 @@
+/* 	Your Name
+	Your ZId
+	Your Course and Section Number
+
+	I certify that this is my own work and where appropriate an extension
+	of the starter code provided for the assignment.
+*/
+
+
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <cstddef>
+#include <algorith>
+
+using namespace std;
+
+/*
+func: matrix::matrix(unsigned int rows, unsigned int cols)
+
+Arg: Initialize the matrix class as needed and use resize() to
+     initialize the matrix size using rows and cols.
+
+Ret: none
+*/
+matrix::matrix(unsigned int rows, unsigned int cols)
+{
+    resize(rows, cols);
+}
+
+
+/*
+func:
+
+Arg:
+
+Ret:
+*/
+
+
+
+/*
+func:
+
+Arg:
+
+Ret:
+*/
+
+
+
+/*
+func:
+
+Arg:
+
+Ret:
+*/
+
+
+
+/*
+func:
+
+Arg:
+
+Ret:
+*/
