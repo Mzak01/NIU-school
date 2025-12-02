@@ -1,0 +1,28 @@
+#
+# PROGRAM:    Assignment 12
+# PROGRAMMER: Milo Zak
+# LOGON ID:   z1917365
+# DATE DUE:   May 5, 2022
+#
+
+# Compiler variables
+CXXFLAGS = g++
+CXXFLAGS = -Wall -Werror -std=c++11 -g
+# Rule to link object code files to create executable file
+all: assign12
+
+assign12: assign12.o rectangle.o shape.o triangle.o circle.o
+	g++ $(CXXFLAGS) -o assign12 $^
+test: assign12.o rectangle.o shape.o circle.o triangle.o
+	g++ $(CXXFLAGS) -o test $^
+
+# Rules to compile source code files to object code
+assign12.o: assign12.cpp circle.h shape.h rectangle.h triangle.h
+shape.o: shape.cpp shape.h
+circle.o: circle.cpp circle.h
+rectangle.o: rectangle.cpp rectangle.h
+trianle.o: triangle.cpp triangle.h
+
+# Pseudo-target to remove object code and executable files
+clean:
+	rm -f assign12 test *.o
