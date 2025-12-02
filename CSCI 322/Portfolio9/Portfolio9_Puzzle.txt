@@ -1,0 +1,84 @@
+package edu.niu.cs.amy.portfolio10_touch;
+
+import android.util.Log;
+
+import java.util.Random;
+
+public class Puzzle
+    {
+    public static final int NUM_PIECES = 5;
+
+    String [] pieces;
+    Random random = new Random();
+
+    //constructor
+    public Puzzle()
+        {
+        //create the puzzle pieces
+        pieces = new String[NUM_PIECES];
+
+        pieces[0] = "I Love";
+        pieces[1] = "Mobile";
+        pieces[2] = "Programming";
+        pieces[3] = "Using";
+        pieces[4] = "Java";
+        }//end constructor
+
+    //method to determine if the puzzle has been solved
+    public boolean solved( String [] solution )
+        {
+        //if the passed in solution contains data and the length is the same as the puzzle
+        if ( solution != null && solution.length == pieces.length)
+            {
+            //compare the parts of the solution array with the pieces array
+            for (int sub = 0; sub < pieces.length; sub++)
+                {
+                //if the solution part does not match the puzzle piece, the game is not solved
+                if (!solution[sub].equals(pieces[sub]))
+                    {
+                    return false;
+                    }
+                }//end for loop
+
+            //at this point, all the pieces match, the puzzle is solved
+            return true;
+            }
+        else
+            {
+            return false;
+            }
+        }//end solved method
+
+    //method that scrambles the puzzle
+    public String [] scramble()
+        {
+        //array that holds the scrambled puzzle
+        String [] scrambled = new String[pieces.length];
+
+        //copy the original puzzle into the new array
+        for (int sub = 0; sub < pieces.length; sub++)
+            scrambled[sub] = pieces[sub];
+
+        //mix up the new array
+        while (solved(scrambled))
+            {
+            for (int sub = 0; sub < scrambled.length; sub++)
+                {
+                int n = random.nextInt(scrambled.length - sub) + sub;
+
+                String temp = scrambled[n];
+                scrambled[n] = scrambled[sub];
+                scrambled[sub] = temp;
+                }//end for
+            }//end while
+
+        return scrambled;
+        }//end scramble method
+
+    //method that returns the number of pieces in the puzzle
+    public int getNumPieces()
+        {
+        return pieces.length;
+        }//end getNumPieces
+
+    }//end Puzzle class
