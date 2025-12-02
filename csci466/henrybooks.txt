@@ -1,0 +1,478 @@
+MariaDB [henrybooks]> SELECT AuthorFirst, AuthorLast
+    -> FROM Author
+    -> ORDER BY AuthorFirst ASC;
++-------------+--------------+
+| AuthorFirst | AuthorLast   |
++-------------+--------------+
+| Albert      | Camus        |
+| Barbara     | Owen         |
+| Bradley     | Collins, Jr. |
+| Bradley     | Collins      |
+| Dick        | Francis      |
+| Douglas R.  | Hofstadter   |
+| Gary        | Wills        |
+| Harper      | Lee          |
+| J.D.        | Salinger     |
+| J.K.        | Rowling      |
+| John        | Steinbeck    |
+| Joseph      | Heller       |
+| Lon         | Schleining   |
+| Paul        | Solotaroff   |
+| Peter       | Straub       |
+| Philip      | Pratt        |
+| Randy       | O'Rourke     |
+| Riva        | Castelman    |
+| Seamus      | Heaney       |
+| Stephen     | King         |
+| Stephen E.  | Ambrose      |
+| Toni        | Morrison     |
+| Tracy       | Kidder       |
+| Truddi      | Chase        |
+| Vernor      | Vintage      |
++-------------+--------------+
+25 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT DISTINCT City
+    -> FROM Publisher;
++--------------+
+| City         |
++--------------+
+| Sauk City WI |
+| New York     |
+| Boulder CO   |
+| Boston       |
+| Los Angeles  |
+| Kingston     |
+| Newtown CT   |
+| Westport CT  |
++--------------+
+8 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT COUNT(Title)
+    -> FROM Book;
++--------------+
+| COUNT(Title) |
++--------------+
+|           33 |
++--------------+
+1 row in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT Branch.BranchName, Sum(Inventory.onhand) AS 'Inventory' 
+    ->    FROM Branch 
+    ->    INNER JOIN Inventory 
+    ->    ON Branch.branchnum = Inventory.branchnum  
+    ->    GROUP BY Branch.branchname;
++-------------------+-----------+
+| BranchName        | Inventory |
++-------------------+-----------+
+| Henry Brentwood   |        29 |
+| Henry Downtown    |        22 |
+| Henry Eastshore   |        17 |
+| Henry On The Hill |        31 |
++-------------------+-----------+
+4 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT SUM(numemployees) AS 'EMPLOYEE'
+    -> FROM Branch;
++----------+
+| EMPLOYEE |
++----------+
+|       40 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [henrybooks]> Select TITLE
+    -> FROM Author,Wrote, Book
+    -> WHERE Authorfirst="Stephen"
+    -> AND Authorlast="King"
+    -> AND Author.Authornum = Wrote.Authornum
+    -> AND Wrote.Bookcode = Book.Bookcode;
++-----------------------+
+| TITLE                 |
++-----------------------+
+| Dreamcatcher: A Novel |
+| Black House           |
++-----------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT title, type, price
+    -> FROM Book
+    -> WHERE paperback = 'Y';
++---------------------------------------+------+-------+
+| title                                 | type | price |
++---------------------------------------+------+-------+
+| A Deepness in the Sky                 | SFI  |  7.19 |
+| Magic Terror                          | HOR  |  7.99 |
+| The Stranger                          | FIC  |  8.00 |
+| The Edge                              | MYS  |  6.99 |
+| Beloved                               | FIC  | 12.95 |
+| Of Mice and Men                       | FIC  |  6.95 |
+| Group: Six People in Search of a Life | PSY  | 10.40 |
+| Nine Stories                          | FIC  |  5.99 |
+| The Soul of a New Machine             | SCI  | 11.16 |
+| Travels with Charley                  | TRA  |  7.95 |
+| Catch-22                              | FIC  | 12.00 |
+| Jazz                                  | FIC  | 12.95 |
+| Band of Brothers                      | HIS  |  9.60 |
+| A Guide to SQL                        | CMP  | 37.95 |
+| Franny and Zooey                      | FIC  |  5.99 |
+| East of Eden                          | FIC  | 12.95 |
+| The Fall                              | FIC  |  8.00 |
+| Godel, Escher, Bach                   | PHI  | 14.00 |
+| When Rabbit Howls                     | PSY  |  6.29 |
+| Song of Solomon                       | FIC  | 14.00 |
+| The Grapes of Wrath                   | FIC  | 13.00 |
+| Slay Ride                             | MYS  |  6.99 |
+| The Catcher in the Rye                | FIC  |  5.99 |
++---------------------------------------+------+-------+
+23 rows in set (0.001 sec)
+
+MariaDB [henrybooks]> SELECT BranchName
+    -> FROM Branch, Inventory
+    -> WHERE Branch.branchnum = Inventory.branchnum
+    -> AND OnHand >= 10;
+Empty set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT title, authorfirst, authorlast
+    -> FROM Book, Author, Wrote
+    -> WHERE Book.bookcode = Wrote.bookcode
+    -> AND Author.authornum = Wrote.authornum
+    -> ORDER BY Title DESC;
++------------------------------------------+-------------+--------------+
+| title                                    | authorfirst | authorlast   |
++------------------------------------------+-------------+--------------+
+| When Rabbit Howls                        | Truddi      | Chase        |
+| Venice                                   | Gary        | Wills        |
+| Van Gogh and Gauguin                     | Bradley     | Collins      |
+| Van Gogh and Gauguin                     | Bradley     | Collins, Jr. |
+| Treasure Chests                          | Randy       | O'Rourke     |
+| Treasure Chests                          | Lon         | Schleining   |
+| Travels with Charley                     | John        | Steinbeck    |
+| To Kill a Mockingbird                    | Harper      | Lee          |
+| The Stranger                             | Albert      | Camus        |
+| The Soul of a New Machine                | Tracy       | Kidder       |
+| The Grapes of Wrath                      | John        | Steinbeck    |
+| The Fall                                 | Albert      | Camus        |
+| The Edge                                 | Dick        | Francis      |
+| The Catcher in the Rye                   | J.D.        | Salinger     |
+| Song of Solomon                          | Toni        | Morrison     |
+| Slay Ride                                | Dick        | Francis      |
+| Second Wind                              | Dick        | Francis      |
+| Of Mice and Men                          | John        | Steinbeck    |
+| Nine Stories                             | J.D.        | Salinger     |
+| Magic Terror                             | Peter       | Straub       |
+| Jazz                                     | Toni        | Morrison     |
+| Harry Potter and the Prisoner of Azkaban | J.K.        | Rowling      |
+| Harry Potter and the Goblet of Fire      | J.K.        | Rowling      |
+| Group: Six People in Search of a Life    | Paul        | Solotaroff   |
+| Godel, Escher, Bach                      | Douglas R.  | Hofstadter   |
+| Franny and Zooey                         | J.D.        | Salinger     |
+| Electric Light                           | Seamus      | Heaney       |
+| East of Eden                             | John        | Steinbeck    |
+| Dreamcatcher: A Novel                    | Stephen     | King         |
+| Catch-22                                 | Joseph      | Heller       |
+| Black House                              | Peter       | Straub       |
+| Black House                              | Stephen     | King         |
+| Beloved                                  | Toni        | Morrison     |
+| Band of Brothers                         | Stephen E.  | Ambrose      |
+| A Guide to SQL                           | Philip      | Pratt        |
+| A Deepness in the Sky                    | Vernor      | Vintage      |
++------------------------------------------+-------------+--------------+
+36 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT publishername, COUNT(Book.Title) AS 'Total Published'
+    -> FROM Publisher, Book
+    -> WHERE Publisher.Publishercode = Book.Publishercode
+    -> GROUP BY Publishername;
++--------------------------+-----------------+
+| publishername            | Total Published |
++--------------------------+-----------------+
+| Back Bay Books           |               1 |
+| Basic Books              |               1 |
+| Berkley Publishing       |               1 |
+| Course Technology        |               1 |
+| Farrar Straus and Giroux |               1 |
+| Fawcett Books            |               1 |
+| HarperCollins Publishers |               1 |
+| Jove Publications        |               3 |
+| Lb Books                 |               3 |
+| Penguin USA              |               4 |
+| Plume                    |               3 |
+| Putnam Publishing Group  |               1 |
+| Random House             |               1 |
+| Scholastic Trade         |               2 |
+| Scribner                 |               2 |
+| Simon and Schuster       |               1 |
+| Taunton Press            |               1 |
+| Tor Books                |               1 |
+| Touchstone Books         |               1 |
+| Vintage Books            |               2 |
+| Westview Press           |               1 |
++--------------------------+-----------------+
+21 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT COUNT(Title) AS 'under 10'
+    -> FROM Book
+    -> WHERE Price < 10;
++----------+
+| under 10 |
++----------+
+|       13 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT Authorlast
+    -> FROM Author
+    -> WHERE AuthorNum IN (SELECT Authornum FROM Wrote WHERE Bookcode IN
+    -> (SELECT Bookcode FROM Book WHERE Publishercode =
+    -> (SELECT Publishercode FROM Publisher WHERE Publishername = 'Simon and Schuster')));
++------------+
+| Authorlast |
++------------+
+| Wills      |
++------------+
+1 row in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT DISTINCT Type, COUNT(*)
+    -> FROM Book
+    -> GROUP BY Type;
++------+----------+
+| Type | COUNT(*) |
++------+----------+
+| ART  |        3 |
+| CMP  |        1 |
+| FIC  |       13 |
+| HIS  |        1 |
+| HOR  |        3 |
+| MYS  |        3 |
+| PHI  |        1 |
+| POE  |        1 |
+| PSY  |        2 |
+| SCI  |        1 |
+| SFI  |        3 |
+| TRA  |        1 |
++------+----------+
+12 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT SUM(Onhand) AS 'Brentwood Inventory'
+    -> FROM Inventory
+    -> WHERE Branchnum = (SELECT Branchnum FROM Branch WHERE Branchlocation = 'Brentwood Mall');
++---------------------+
+| Brentwood Inventory |
++---------------------+
+|                  29 |
++---------------------+
+1 row in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT BranchLocation, NumEmployees, SUM(OnHand) AS 'Number On Hand' 
+    ->    FROM Branch, Inventory 
+    ->    WHERE Branch.BranchNum = Inventory.BranchNum 
+    ->    GROUP BY BranchLocation;
++----------------+--------------+----------------+
+| BranchLocation | NumEmployees | Number On Hand |
++----------------+--------------+----------------+
+| 1289 Bedford   |            6 |             31 |
+| 16 Riverview   |           10 |             22 |
+| Brentwood Mall |           15 |             29 |
+| Eastshore Mall |            9 |             17 |
++----------------+--------------+----------------+
+4 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT Title 
+    ->    FROM Book, Wrote
+    ->    WHERE Wrote.BookCode = Book.BookCode AND Sequence IN 
+    ->    (SELECT Sequence FROM Wrote WHERE AuthorNum = 1);
++------------------------------------------+
+| Title                                    |
++------------------------------------------+
+| A Deepness in the Sky                    |
+| Magic Terror                             |
+| The Stranger                             |
+| Venice                                   |
+| Second Wind                              |
+| The Edge                                 |
+| Dreamcatcher: A Novel                    |
+| Treasure Chests                          |
+| Beloved                                  |
+| Harry Potter and the Prisoner of Azkaban |
+| Van Gogh and Gauguin                     |
+| Of Mice and Men                          |
+| Electric Light                           |
+| Group: Six People in Search of a Life    |
+| Nine Stories                             |
+| The Soul of a New Machine                |
+| Travels with Charley                     |
+| Catch-22                                 |
+| Jazz                                     |
+| Band of Brothers                         |
+| A Guide to SQL                           |
+| Franny and Zooey                         |
+| East of Eden                             |
+| Harry Potter and the Goblet of Fire      |
+| The Fall                                 |
+| Godel, Escher, Bach                      |
+| When Rabbit Howls                        |
+| Black House                              |
+| Song of Solomon                          |
+| The Grapes of Wrath                      |
+| Slay Ride                                |
+| The Catcher in the Rye                   |
+| To Kill a Mockingbird                    |
++------------------------------------------+
+33 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT PublisherName 
+    ->    FROM Publisher 
+    ->    WHERE PublisherName LIKE 'T%';
++-------------------+
+| PublisherName     |
++-------------------+
+| Taunton Press     |
+| Tor Books         |
+| Thames and Hudson |
+| Touchstone Books  |
++-------------------+
+4 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT * FROM Author 
+    ->    WHERE AuthorLast LIKE '%ll%' 
+    ->     OR AuthorFirst LIKE '%ll%';
++-----------+--------------+-------------+
+| AuthorNum | AuthorLast   | AuthorFirst |
++-----------+--------------+-------------+
+|         9 | Collins      | Bradley     |
+|        10 | Heller       | Joseph      |
+|        11 | Wills        | Gary        |
+|        19 | Collins, Jr. | Bradley     |
++-----------+--------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [henrybooks]> SELECT Title 
+    ->    FROM Book 
+    ->    WHERE BookCode LIKE '079x' 
+    ->     OR BookCode LIKE '138x' 
+    ->     OR BookCode LIKE '669x';
++----------------+
+| Title          |
++----------------+
+| Second Wind    |
+| Beloved        |
+| A Guide to SQL |
++----------------+
+3 rows in set (0.001 sec)
+
+MariaDB [henrybooks]> SELECT Title, Authorlast, Publishername
+    -> FROM Book, Publisher, Author, Wrote
+    -> WHERE Book.Publishercode = Publisher.PublisherCode
+    -> AND Book.Bookcode = Wrote.Bookcode
+    -> AND Author.Authornum = Wrote.Authornum
+    -> ORDER BY Authorlast ASC;
++------------------------------------------+--------------+--------------------------+
+| Title                                    | Authorlast   | Publishername            |
++------------------------------------------+--------------+--------------------------+
+| Band of Brothers                         | Ambrose      | Touchstone Books         |
+| The Stranger                             | Camus        | Vintage Books            |
+| The Fall                                 | Camus        | Vintage Books            |
+| When Rabbit Howls                        | Chase        | Jove Publications        |
+| Van Gogh and Gauguin                     | Collins      | Westview Press           |
+| Van Gogh and Gauguin                     | Collins, Jr. | Westview Press           |
+| Second Wind                              | Francis      | Putnam Publishing Group  |
+| Slay Ride                                | Francis      | Jove Publications        |
+| The Edge                                 | Francis      | Jove Publications        |
+| Electric Light                           | Heaney       | Farrar Straus and Giroux |
+| Catch-22                                 | Heller       | Scribner                 |
+| Godel, Escher, Bach                      | Hofstadter   | Basic Books              |
+| The Soul of a New Machine                | Kidder       | Back Bay Books           |
+| Dreamcatcher: A Novel                    | King         | Scribner                 |
+| Black House                              | King         | Random House             |
+| To Kill a Mockingbird                    | Lee          | HarperCollins Publishers |
+| Song of Solomon                          | Morrison     | Plume                    |
+| Beloved                                  | Morrison     | Plume                    |
+| Jazz                                     | Morrison     | Plume                    |
+| Treasure Chests                          | O'Rourke     | Taunton Press            |
+| A Guide to SQL                           | Pratt        | Course Technology        |
+| Harry Potter and the Goblet of Fire      | Rowling      | Scholastic Trade         |
+| Harry Potter and the Prisoner of Azkaban | Rowling      | Scholastic Trade         |
+| The Catcher in the Rye                   | Salinger     | Lb Books                 |
+| Nine Stories                             | Salinger     | Lb Books                 |
+| Franny and Zooey                         | Salinger     | Lb Books                 |
+| Treasure Chests                          | Schleining   | Taunton Press            |
+| Group: Six People in Search of a Life    | Solotaroff   | Berkley Publishing       |
+| Travels with Charley                     | Steinbeck    | Penguin USA              |
+| The Grapes of Wrath                      | Steinbeck    | Penguin USA              |
+| Of Mice and Men                          | Steinbeck    | Penguin USA              |
+| East of Eden                             | Steinbeck    | Penguin USA              |
+| Black House                              | Straub       | Random House             |
+| Magic Terror                             | Straub       | Fawcett Books            |
+| A Deepness in the Sky                    | Vintage      | Tor Books                |
+| Venice                                   | Wills        | Simon and Schuster       |
++------------------------------------------+--------------+--------------------------+
+36 rows in set (0.001 sec)
+
+MariaDB [henrybooks]> SELECT Publishername
+    -> FROM Publisher
+    -> WHERE LEFT(Publishername,1)='T';
++-------------------+
+| Publishername     |
++-------------------+
+| Taunton Press     |
+| Tor Books         |
+| Thames and Hudson |
+| Touchstone Books  |
++-------------------+
+4 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT Title
+    -> FROM Book
+    -> WHERE Bookcode IN (SELECT BookCode FROM Wrote WHERE Authornum =
+    -> (SELECT Authornum FROM Author WHERE Authorfirst = 'Stephen' AND Authorlast = 'King'));
++-----------------------+
+| Title                 |
++-----------------------+
+| Dreamcatcher: A Novel |
+| Black House           |
++-----------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> SELECT BookCode, Price, paperback
+    -> FROM Book;
++----------+-------+-----------+
+| BookCode | Price | paperback |
++----------+-------+-----------+
+| 0180     |  7.19 | Y         |
+| 0189     |  7.99 | Y         |
+| 0200     |  8.00 | Y         |
+| 0378     | 24.50 | N         |
+| 079X     | 24.95 | N         |
+| 0808     |  6.99 | Y         |
+| 1351     | 19.60 | N         |
+| 1382     | 24.46 | N         |
+| 138X     | 12.95 | Y         |
+| 2226     | 13.96 | N         |
+| 2281     | 21.00 | N         |
+| 2766     |  6.95 | Y         |
+| 2908     | 14.00 | N         |
+| 3350     | 10.40 | Y         |
+| 3743     |  5.99 | Y         |
+| 3906     | 11.16 | Y         |
+| 5163     |  7.95 | Y         |
+| 5790     | 12.00 | Y         |
+| 6128     | 12.95 | Y         |
+| 6328     |  9.60 | Y         |
+| 669X     | 37.95 | Y         |
+| 6908     |  5.99 | Y         |
+| 7405     | 12.95 | Y         |
+| 7443     | 18.16 | N         |
+| 7559     |  8.00 | Y         |
+| 8092     | 14.00 | Y         |
+| 8720     |  6.29 | Y         |
+| 9611     | 18.81 | N         |
+| 9627     | 14.00 | Y         |
+| 9701     | 13.00 | Y         |
+| 9882     |  6.99 | Y         |
+| 9883     |  5.99 | Y         |
+| 9931     | 18.00 | N         |
++----------+-------+-----------+
+33 rows in set (0.000 sec)
+
+MariaDB [henrybooks]> \q;

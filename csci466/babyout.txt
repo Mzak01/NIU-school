@@ -1,0 +1,359 @@
+MariaDB [z1917365]> USE BabyName;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [BabyName]> SHOW TABLES;
++--------------------+
+| Tables_in_BabyName |
++--------------------+
+| BabyName           |
++--------------------+
+1 row in set (0.001 sec)
+
+MariaDB [BabyName]> SELECT DISTINCT name, year
+    -> FROM BabyName
+    -> WHERE year = 2001
+    -> LIMIT 50;
++-----------+------+
+| name      | year |
++-----------+------+
+| Aadarsh   | 2001 |
+| Aaden     | 2001 |
+| Aadil     | 2001 |
+| Aaditya   | 2001 |
+| Aahil     | 2001 |
+| Aailyah   | 2001 |
+| Aaisha    | 2001 |
+| Aajaylah  | 2001 |
+| Aakanksha | 2001 |
+| Aakash    | 2001 |
+| Aala      | 2001 |
+| Aalaya    | 2001 |
+| Aalayah   | 2001 |
+| Aalaysia  | 2001 |
+| Aaleah    | 2001 |
+| Aaleigha  | 2001 |
+| Aaleyah   | 2001 |
+| Aalia     | 2001 |
+| Aaliah    | 2001 |
+| Aaliayah  | 2001 |
+| Aaliayh   | 2001 |
+| Aalijah   | 2001 |
+| Aaliya    | 2001 |
+| Aaliyah   | 2001 |
+| Aaliyan   | 2001 |
+| Aaliyha   | 2001 |
+| Aalliyah  | 2001 |
+| Aalyah    | 2001 |
+| Aalyha    | 2001 |
+| Aalyiah   | 2001 |
+| Aalyssa   | 2001 |
+| Aamari    | 2001 |
+| Aamaya    | 2001 |
+| Aamina    | 2001 |
+| Aaminah   | 2001 |
+| Aamir     | 2001 |
+| Aamira    | 2001 |
+| Aamirah   | 2001 |
+| Aamiyah   | 2001 |
+| Aamna     | 2001 |
+| Aanchal   | 2001 |
+| Aanika    | 2001 |
+| Aaniyah   | 2001 |
+| Aanya     | 2001 |
+| Aaran     | 2001 |
+| Aaren     | 2001 |
+| Aaria     | 2001 |
+| Aariah    | 2001 |
+| Aariana   | 2001 |
+| Aaric     | 2001 |
++-----------+------+
+50 rows in set (0.000 sec)
+
+MariaDB [BabyName]> DESCRIBE BabyName;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(15) | NO   | PRI | NULL    |       |
+| count  | int(11)     | YES  |     | NULL    |       |
+| gender | char(1)     | NO   | PRI | NULL    |       |
+| year   | smallint(6) | NO   | PRI | NULL    |       |
+| place  | char(2)     | NO   | PRI | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+
+MariaDB [BabyName]> SELECT DISTINCT name, year
+    -> FROM BabyName
+    -> WHERE name = 'Milo'
+    -> LIMIT 50;
++------+------+
+| name | year |
++------+------+
+| Milo | 1921 |
+| Milo | 1923 |
+| Milo | 1924 |
+| Milo | 1925 |
+| Milo | 1945 |
+| Milo | 1949 |
+| Milo | 1970 |
+| Milo | 1974 |
+| Milo | 2006 |
+| Milo | 2008 |
+| Milo | 2009 |
+| Milo | 2010 |
+| Milo | 2011 |
+| Milo | 2012 |
+| Milo | 2013 |
+| Milo | 2014 |
+| Milo | 2015 |
+| Milo | 1880 |
+| Milo | 1881 |
+| Milo | 1882 |
+| Milo | 1883 |
+| Milo | 1884 |
+| Milo | 1885 |
+| Milo | 1886 |
+| Milo | 1887 |
+| Milo | 1888 |
+| Milo | 1889 |
+| Milo | 1890 |
+| Milo | 1891 |
+| Milo | 1892 |
+| Milo | 1893 |
+| Milo | 1894 |
+| Milo | 1895 |
+| Milo | 1896 |
+| Milo | 1897 |
+| Milo | 1898 |
+| Milo | 1899 |
+| Milo | 1900 |
+| Milo | 1901 |
+| Milo | 1902 |
+| Milo | 1903 |
+| Milo | 1904 |
+| Milo | 1905 |
+| Milo | 1906 |
+| Milo | 1907 |
+| Milo | 1908 |
+| Milo | 1909 |
+| Milo | 1910 |
+| Milo | 1911 |
+| Milo | 1912 |
++------+------+
+50 rows in set (0.000 sec)
+
+MariaDB [BabyName]> SELECT place, count(DISTINCT name)
+    -> FROM BabyName
+    -> GROUP BY place;
++-------+----------------------+
+| place | count(DISTINCT name) |
++-------+----------------------+
+| AK    |                 1583 |
+| AL    |                 6501 |
+| AR    |                 4825 |
+| AZ    |                 5500 |
+| CA    |                18986 |
+| CO    |                 4953 |
+| CT    |                 3531 |
+| DC    |                 2622 |
+| DE    |                 1677 |
+| FL    |                10820 |
+| GA    |                 9467 |
+| HI    |                 2870 |
+| IA    |                 4257 |
+| ID    |                 2874 |
+| IL    |                10847 |
+| IN    |                 6392 |
+| KS    |                 4359 |
+| KY    |                 5178 |
+| LA    |                 6957 |
+| MA    |                 5185 |
+| MD    |                 5455 |
+| ME    |                 2146 |
+| MI    |                 8567 |
+| MN    |                 5374 |
+| MO    |                 6301 |
+| MS    |                 5486 |
+| MT    |                 2188 |
+| NC    |                 8598 |
+| ND    |                 2282 |
+| NE    |                 3383 |
+| NH    |                 1756 |
+| NJ    |                 7428 |
+| NM    |                 3333 |
+| NV    |                 2861 |
+| NY    |                14101 |
+| OH    |                 9066 |
+| OK    |                 5548 |
+| OR    |                 4143 |
+| PA    |                 8851 |
+| RI    |                 1795 |
+| SC    |                 5632 |
+| SD    |                 2289 |
+| TN    |                 6750 |
+| TX    |                16768 |
+| US    |                95025 |
+| UT    |                 4489 |
+| VA    |                 7093 |
+| VT    |                 1358 |
+| WA    |                 5922 |
+| WI    |                 5369 |
+| WV    |                 3261 |
+| WY    |                 1524 |
++-------+----------------------+
+52 rows in set (0.000 sec)
+
+MariaDB [BabyName]> SELECT year, count, name
+    -> FROM BabyName
+    -> WHERE year = '1989'
+    -> GROUP BY count DESC
+    -> Limit 50;
++------+-------+-------------+
+| year | count | name        |
++------+-------+-------------+
+| 1989 | 65378 | Michael     |
+| 1989 | 53180 | Christopher |
+| 1989 | 47885 | Jessica     |
+| 1989 | 47585 | Ashley      |
+| 1989 | 45374 | Matthew     |
+| 1989 | 44086 | Joshua      |
+| 1989 | 37787 | Brittany    |
+| 1989 | 36827 | Amanda      |
+| 1989 | 35210 | David       |
+| 1989 | 34992 | Daniel      |
+| 1989 | 34809 | Andrew      |
+| 1989 | 32842 | Justin      |
+| 1989 | 32695 | James       |
+| 1989 | 30064 | Robert      |
+| 1989 | 29873 | Joseph      |
+| 1989 | 29838 | John        |
+| 1989 | 28405 | Ryan        |
+| 1989 | 28220 | Nicholas    |
+| 1989 | 27790 | Sarah       |
+| 1989 | 24790 | Samantha    |
+| 1989 | 24673 | William     |
+| 1989 | 24419 | Anthony     |
+| 1989 | 23995 | Jennifer    |
+| 1989 | 23598 | Jonathan    |
+| 1989 | 23304 | Brandon     |
+| 1989 | 22768 | Stephanie   |
+| 1989 | 21200 | Kevin       |
+| 1989 | 21063 | Lauren      |
+| 1989 | 20876 | Kyle        |
+| 1989 | 20293 | Elizabeth   |
+| 1989 | 19784 | Megan       |
+| 1989 | 19024 | Nicole      |
+| 1989 | 18976 | Eric        |
+| 1989 | 18920 | Steven      |
+| 1989 | 18430 | Thomas      |
+| 1989 | 18099 | Brian       |
+| 1989 | 18074 | Zachary     |
+| 1989 | 17829 | Jacob       |
+| 1989 | 17322 | Emily       |
+| 1989 | 16927 | Adam        |
+| 1989 | 16757 | Amber       |
+| 1989 | 16423 | Timothy     |
+| 1989 | 16247 | Heather     |
+| 1989 | 15728 | Benjamin    |
+| 1989 | 15713 | Tiffany     |
+| 1989 | 15589 | Tyler       |
+| 1989 | 15365 | Danielle    |
+| 1989 | 15355 | Rachel      |
+| 1989 | 15314 | Aaron       |
+| 1989 | 15202 | Melissa     |
++------+-------+-------------+
+50 rows in set (0.000 sec)
+
+MariaDB [BabyName]> SELECT *
+    -> FROM BabyName
+    -> WHERE name Like 'Milo%'
+    -> ORDER BY name DESC, count DESC, year DESC
+    -> LIMIT 50;
++---------+-------+--------+------+-------+
+| name    | count | gender | year | place |
++---------+-------+--------+------+-------+
+| Milove  |     8 | F      | 2013 | US    |
+| Milove  |     8 | F      | 2012 | US    |
+| Milove  |     5 | F      | 2011 | US    |
+| Milous  |     6 | M      | 1941 | US    |
+| Milosz  |     6 | M      | 2007 | US    |
+| Milosh  |     5 | M      | 2009 | US    |
+| Milos   |    16 | M      | 2012 | US    |
+| Milos   |    15 | M      | 2008 | US    |
+| Milos   |    14 | M      | 2011 | US    |
+| Milos   |    13 | M      | 2009 | US    |
+| Milos   |    12 | M      | 2013 | US    |
+| Milos   |    12 | M      | 2007 | US    |
+| Milos   |    11 | M      | 2015 | US    |
+| Milos   |    11 | M      | 2014 | US    |
+| Milos   |    11 | M      | 2010 | US    |
+| Milos   |    10 | M      | 2002 | US    |
+| Milos   |    10 | M      | 1999 | US    |
+| Milos   |     9 | M      | 2005 | US    |
+| Milos   |     9 | M      | 2004 | US    |
+| Milos   |     9 | M      | 2003 | US    |
+| Milos   |     9 | M      | 2001 | US    |
+| Milos   |     9 | M      | 1994 | US    |
+| Milos   |     7 | M      | 2000 | US    |
+| Milos   |     7 | M      | 1992 | US    |
+| Milos   |     7 | M      | 1987 | US    |
+| Milos   |     7 | M      | 1985 | US    |
+| Milos   |     7 | M      | 1982 | US    |
+| Milos   |     6 | M      | 1991 | US    |
+| Milos   |     6 | M      | 1990 | US    |
+| Milos   |     6 | M      | 1989 | US    |
+| Milos   |     6 | M      | 1984 | US    |
+| Milos   |     6 | M      | 1979 | US    |
+| Milos   |     6 | M      | 1924 | US    |
+| Milos   |     5 | M      | 2012 | CA    |
+| Milos   |     5 | M      | 2006 | US    |
+| Milos   |     5 | M      | 1998 | US    |
+| Milos   |     5 | M      | 1996 | US    |
+| Milos   |     5 | M      | 1980 | US    |
+| Milos   |     5 | M      | 1969 | US    |
+| Milos   |     5 | M      | 1968 | US    |
+| Milos   |     5 | M      | 1924 | PA    |
+| Milos   |     5 | M      | 1920 | US    |
+| Milorad |     5 | M      | 1953 | US    |
+| Milon   |     8 | M      | 2006 | US    |
+| Milon   |     8 | M      | 1975 | US    |
+| Milon   |     8 | M      | 1923 | US    |
+| Milon   |     7 | M      | 2014 | US    |
+| Milon   |     7 | M      | 1949 | US    |
+| Milon   |     7 | M      | 1930 | US    |
+| Milon   |     6 | M      | 2005 | US    |
++---------+-------+--------+------+-------+
+50 rows in set (0.001 sec)
+
+MariaDB [BabyName]> SELECT COUNT(*) FROM BabyName;
++----------+
+| COUNT(*) |
++----------+
+|  7601706 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [BabyName]> SELECT year, gender, count(gender)
+    -> FROM BabyName
+    -> WHERE year = '1963'
+    -> GROUP BY gender;
++------+--------+---------------+
+| year | gender | count(gender) |
++------+--------+---------------+
+| 1963 | F      |         37984 |
+| 1963 | M      |         27240 |
++------+--------+---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [BabyName]> SELECT COUNT(DISTINCT name), year
+    -> FROM BabyName
+    -> WHERE year = '1945';
++----------------------+------+
+| COUNT(DISTINCT name) | year |
++----------------------+------+
+|                 8081 | 1945 |
++----------------------+------+
+1 row in set (0.000 sec)
+
+MariaDB [BabyName]> \q
