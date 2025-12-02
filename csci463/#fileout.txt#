@@ -1,0 +1,5 @@
+emacs -nw fileout.txt	// start emacs
+<esc>x hexl-mode		// after you type <esc>x, the cursor will drop to the bottom line for
+				// 	entry of the rest of the command
+<cntl>x<cntl>c		// exit emacs
+xV4unix
