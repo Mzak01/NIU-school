@@ -1,0 +1,265 @@
+
+                   J E S 2  J O B  L O G  --  S Y S T E M  8 5 6 1  --  N O D E  S V S C J E S 2        
+
+ 
+20.55.37 JOB00077 ---- FRIDAY,    22 MAR 2024 ----
+20.55.37 JOB00077  IRR010I  USERID KC03ACD  IS ASSIGNED TO THIS JOB.
+20.55.37 JOB00077  ICH70001I KC03ACD  LAST ACCESS AT 20:54:24 ON FRIDAY, MARCH 22, 2024
+20.55.37 JOB00077  $HASP373 KC03ACDA STARTED - INIT 3    - CLASS A        - SYS 8561
+20.55.38 JOB00077  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+20.55.38 JOB00077  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+20.55.38 JOB00077  -JSTEP01              00     45      3       .00       .00     .0             8  BATCH        0     0     0     0
+20.55.38 JOB00077  -KC03ACDA ENDED.  NAME-MILO ZAK             TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+20.55.38 JOB00077  $HASP395 KC03ACDA ENDED - RC=0000
+
+------ JES2 JOB STATISTICS ------
+
+
+  22 MAR 2024 JOB EXECUTION DATE
+
+
+          131 CARDS READ
+
+
+          215 SYSOUT PRINT RECORDS
+
+
+            0 SYSOUT PUNCH RECORDS
+
+
+           21 SYSOUT SPOOL KBYTES
+
+
+         0.00 MINUTES EXECUTION TIME
+       1 //KC03ACDA JOB ,'MILO ZAK',MSGCLASS=H                                   JOB00077
+       2 //JSTEP01 EXEC PGM=ASSIST                                                       
+       3 //STEPLIB DD DSN=KC00NIU.ASSIST.LOADLIB,DISP=SHR                                
+       4 //SYSPRINT DD SYSOUT=*                                                          
+       5 //SYSIN DD *                                                                    
+         //*                                                                             
+         //* THE FOLLOWING IS THE INPUT DATA SET                                         
+         //*                                                                             
+       6 //FT05F001 DD DSN=KC02322.CSCI360.DATAFA23(DATA6),DISP=SHR                      
+         //*                                                                             
+         //* THE FOLLOWING IS THE OUTPUT DATA SET                                        
+         //*                                                                             
+       7 //FT06F001 DD SYSOUT=*                                                          
+         //*                                                                             
+       8 //                                                                              
+ICH70001I KC03ACD  LAST ACCESS AT 20:54:24 ON FRIDAY, MARCH 22, 2024
+IEFA111I KC03ACDA IS USING THE FOLLOWING JOB RELATED SETTINGS:
+         SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+IEF236I ALLOC. FOR KC03ACDA JSTEP01
+IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF237I JES2 ALLOCATED TO SYSIN
+IGD103I SMS ALLOCATED TO DDNAME FT05F001
+IEF237I JES2 ALLOCATED TO FT06F001
+IEF142I KC03ACDA JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+IGD104I KC00NIU.ASSIST.LOADLIB                       RETAINED,  DDNAME=STEPLIB 
+IEF285I   KC03ACD.KC03ACDA.JOB00077.D0000102.?         SYSOUT        
+IEF285I   KC03ACD.KC03ACDA.JOB00077.D0000101.?         SYSIN         
+IGD104I KC02322.CSCI360.DATAFA23                     RETAINED,  DDNAME=FT05F001
+IEF285I   KC03ACD.KC03ACDA.JOB00077.D0000103.?         SYSOUT        
+IEF373I STEP/JSTEP01 /START 2024082.2055
+IEF032I STEP/JSTEP01 /STOP  2024082.2055 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:   584K  SYS:   252K  EXT:        8K  SYS:    11228K
+        ATB- REAL:                  1268K  SLOTS:                     0K
+             VIRT- ALLOC:      16M SHRD:       0M
+IEF375I  JOB/KC03ACDA/START 2024082.2055
+IEF033I  JOB/KC03ACDA/STOP  2024082.2055 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+
+*** ASSIST 4.0/A2-05/15/82  470/V7A/0:OS/VS2  INS=SDFP7/X=BGHO, CHECK/TRC/=1180, OPTS=CDKMPR FROM PENN ST*NIU COMPSCI*LT            
+
+                                                                                                                                    
+
+                                                                                                               PAGE    1            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                      1 *                                                                                           
+                                      2 ******************************************************************                          
+                                      3 *                                                                *                          
+                                      4 * CSCI 360-1              ASSIGNMENT 6               SPRING 2024 *                          
+                                      5 *                                                                *                          
+                                      6 * DEVELOPER NAME: MILO ZAK                                       *                          
+                                      7 *       DUE DATE: 3/22/2024                                      *                          
+                                      8 *                                                                *                          
+                                      9 * Write an Assembler program to calculate payroll for a          *                          
+                                     10 * business. Each employee has an hourly pay rate, anumber of     *                          
+                                     11 * hours worked in the pay period, a deduction amount for any     *                          
+                                     12 * lunches eaten in the companycafeteria during the pay period,   *                          
+                                     13 * and, if earned, a bonus amount.                                *                          
+                                     14 *                                                                *                          
+                                     15 ******************************************************************                          
+                                     16 *                                                                                           
+000000                               17 ASSIGN6  CSECT                                                                              
+000000                               18          USING ASSIGN6,15     ESTABLISH ADDRESSABILITY ON REG 15                            
+                                     19 *                                                                                           
+000000 41A0 0010            00010    20          LA    10,16          GET FED WITHHOLDING PERCENT INTO R10                          
+000004 41B0 0004            00004    21          LA    11,4           GET STATE WITHHOLDING PERCENT INTO R11                        
+                                     22 *                                                                                           
+000008 E000 F128 0050 00128          23          XREAD RECORD,80      GET FIRST EMPLOYEE RECORD                                     
+                                     24 *                                                                                           
+00000E 4740 F08C            0008C    25 LOOP1    BC   B'0100',ENDLOOP1  BRANCH TO ENDLOOP1 IF EOF                                   
+                                     26 *                                                                                           
+000012 4130 F128            00128    27          LA    3,RECORD                                                                     
+000016 4120 F094            00094    28          LA    2,DETAIL                                                                     
+                                     29 *                                                                                           
+                                     30 *STORE NAME AND ID*                                                                         
+                                     31 *                                                                                           
+00001A D204 F0B2 F141 000B2 00141    32          MVC   OEMPID(5),RECORD+25                                                          
+000020 D218 F095 F128 00095 00128    33          MVC   OEMPNME(25),RECORD                                                           
+                                     34 *                                                                                           
+000026 5320 F147            00147    35          XDECI 2,RECORD+31    GET PAY RATE                                                  
+00002A 5220 F0BB            000BB    36          XDECO 2,OPAYRATE     DISPLAY PAY RATE                                              
+                                     37 *                                                                                           
+00002E 5331 0000            00000    38          XDECI 3,0(1)         GET HOURS                                                     
+000032 5230 F0CB            000CB    39          XDECO 3,OHOURS       DISPLAY HOURS                                                 
+                                     40 *                                                                                           
+000036 1C22                          41          MR    2,2            PAY RATE * HOURS (PRODUCT IN R3)                              
+                                     42 *                                                                                           
+000038 5321 0000            00000    43          XDECI 2,0(1)         GET DEDUCTIONS                                                
+00003C 1B32                          44          SR    3,2            SUBTRACT FROM PAY                                             
+00003E 5321 0000            00000    45          XDECI 2,0(1)         GET BONUS                                                     
+000042 1A32                          46          AR    3,2            ADD TO PAY                                                    
+                                     47 *                                                                                           
+000044 5230 F0DB            000DB    48          XDECO 3,OGROSS       DISPLAY GROSS PAY AMT                                         
+                                     49 *                                                                                           
+000048 5030 F11C            0011C    50          ST    3,SVGROSS      STORES THE GROSS PAY FOR LATER                                
+                                     51 *                                                                                           
+00004C 1C2A                          52          MR    2,10           MULTIPLIES FED WH AMT WITH GROSS PAY                          
+
+                                                                                                               PAGE    2            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+00004E 5D20 F090            00090    53          D     2,=F'100'      DIVIDE BY 100                                                 
+                                     54 *                                                                                           
+000052 5230 F0EB            000EB    55          XDECO 3,OFEDWH       PRINT FEDERAL WH                                              
+                                     56 *                                                                                           
+000056 5030 F120            00120    57          ST    3,SVFEDWH      STORE FEDERAL WH FOR LATER                                    
+00005A 5830 F11C            0011C    58          L     3,SVGROSS      LOAD GROSS PAY INTO REG3                                      
+                                     59 *                                                                                           
+00005E 1C2B                          60          MR    2,11           MULTIPLY BY STATE TAX                                         
+000060 5D20 F090            00090    61          D     2,=F'100'      DIVIDE BY 100                                                 
+                                     62 *                                                                                           
+000064 5230 F0FC            000FC    63          XDECO 3,OSTWH        DISPLAY STATE WH                                              
+                                     64 *                                                                                           
+000068 5030 F124            00124    65          ST    3,SVSTWH       SAVE STATE WH FOR LATER                                       
+00006C 5830 F11C            0011C    66          L     3,SVGROSS      LOAD GROSS PAY INTO REGISTER 3                                
+                                     67 *                                                                                           
+000070 5B30 F120            00120    68          S     3,SVFEDWH      SUBTRACT FEDERAL WH FROM GROSS PAY                            
+000074 5B30 F124            00124    69          S     3,SVSTWH       SUBTRACT STATE WH FROM GROSS PAY                              
+                                     70 *                                                                                           
+000078 5230 F10D            0010D    71          XDECO 3,ONETPAY      DISPLAY NET PAY                                               
+                                     72 *                                                                                           
+00007C E020 F094 0085 00094          73          XPRNT DETAIL,133     PRINT THE EMPLOYEE DETAIL RECORD                              
+                                     74 *                                                                                           
+000082 E000 F128 0050 00128          75          XREAD RECORD,80      READ NEXT EMPLOYEE RECORD                                     
+                                     76 *                                                                                           
+000088 47F0 F00E            0000E    77          BC    B'1111',LOOP1  BRANCH TO TOP OF LOOP1 TO CHECK EOF                           
+                                     78 *                                                                                           
+00008C                               79 ENDLOOP1 DS    0H                                                                           
+                                     80 *                                                                                           
+00008C 07FE                          81          BCR   B'1111',14     UNCONDITIONAL RETURN TO CALLER                                
+                                     82 *                                                                                           
+                                     83          LTORG                LITERAL ORGANIZATION                                          
+000090 00000064                      84                =F'100'                                                                      
+                                     85 *                                                                                           
+                                     86 * THE FOLLOWING 16 LINES ARE THE DEFINITION FOR THE OUTPUT DETAIL                           
+                                     87 *   LINE FOR EACH EMPLOYEE FOR THE REPORT YOU ARE CREATING.  IT                             
+                                     88 *   IS EXACTLY 133 BYTES LONG.  EACH OUTPUT FIELD IS SEPARATED                              
+                                     89 *   BY 4 OR 5 BYTES OF EBCDIC SPACES, i.e., X'40'.                                          
+                                     90 *                                                                                           
+000094 F0                            91 DETAIL   DC    C'0'   CARRIAGE CONTROL CHARACTER                                            
+000095                               92 OEMPNME  DS    CL25   OUTPUT FIELD FOR EMPLOYEE NAME                                        
+0000AE 40404040                      93          DC    4C' '  SPACES                                                                
+0000B2                               94 OEMPID   DS    CL5    OUTPUT FIELD FOR EMPLOYEE ID                                          
+0000B7 40404040                      95          DC    4C' '  SPACES                                                                
+0000BB                               96 OPAYRATE DS    CL12   OUTPUT FIELD FOR XDECO OF PAY RATE                                    
+0000C7 40404040                      97          DC    4C' '  SPACES                                                                
+0000CB                               98 OHOURS   DS    CL12   OUTPUT FIELD FOR XDECO OF HOURS WORKED                                
+0000D7 40404040                      99          DC    4C' '  SPACES                                                                
+0000DB                              100 OGROSS   DS    CL12   OUTPUT FIELD FOR XDECO OF GROSS PAY AMT                               
+0000E7 40404040                     101          DC    4C' '  SPACES                                                                
+0000EB                              102 OFEDWH   DS    CL12   OUTPUT FIELD FOR XDECO OF FEDERAL WH AMT                              
+0000F7 4040404040                   103          DC    5C' '  SPACES                                                                
+0000FC                              104 OSTWH    DS    CL12   OUTPUT FIELD FOR XDECO OF STATE WH AMT                                
+000108 4040404040                   105          DC    5C' '  SPACES                                                                
+00010D                              106 ONETPAY  DS    CL12   OUTPUT FIELD FOR XDECO OF NET PAY AMT                                 
+                                    107 *                                                                                           
+00011C 00000000                     108 SVGROSS  DC    F'0'   STORAGE HOLDER FOR GROSS PAY                                          
+000120 00000000                     109 SVFEDWH  DC    F'0'   STORAGE HOLDER FOR FEDERAL WH AMT                                     
+
+                                                                                                               PAGE    3            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000124 00000000                     110 SVSTWH   DC    F'0'   STORAGE HOLDER FOR STATE WH AMT                                       
+                                    111 *                                                                                           
+                                    112 *  THE FOLLOWING IS THE BUFFER FOR THE INPUT RECORD                                         
+                                    113 *                                                                                           
+000128                              114 RECORD   DS    CL80   BUFFER FOR EMPLOYEE RECORD READ FROM INPUT FILE                       
+                                    115 *                                                                                           
+                                    116          END   ASSIGN6                                                                      
+
+***  NO   STATEMENTS FLAGGED -  NO   WARNINGS,  NO   ERRORS                                                                         
+
+*** DYNAMIC CORE AREA USED:  LOW:    4940 HIGH:     672 LEAVING:  487956 FREE BYTES. AVERAGE:       47 BYTES/STMT ***               
+
+*** ASSEMBLY TIME =    0.000 SECS,   117000 STATEMENTS/SEC ***                                                                      
+
+*** PROGRAM EXECUTION BEGINNING - ANY OUTPUT BEFORE EXECUTION TIME MESSAGE IS PRODUCED BY USER PROGRAM ***                          
+
+WOLFGANG AMADEUS MOZART      12345              15              80            1675             268               67             1340
+
+RICHARD STRAUSS              23456              19              80            1530             244               61             1225
+
+AMY BEACH                    22132              10              80             969             155               38              776
+
+DAME ETHEL SMYTHE            65465              22              80            2645             423              105             2117
+
+PETER ILYICH TCHAIKOVSKY     44560              23              28             680             108               27              545
+
+ANTON BRUCKNER               99870              22              80            1739             278               69             1392
+
+LUDWIG VAN BEETHOVEN         13345              15              80            1675             268               67             1340
+
+JOHANNES BRAHMS              24456              19              80            1530             244               61             1225
+
+BELA BARTOK                  22532              10              80             969             155               38              776
+
+MAX REGER                    11465              22              80            2645             423              105             2117
+
+SAMUEL BARBER                13360              23              28             680             108               27              545
+
+GIUSEPPE VERDI               99873              22              80            1739             278               69             1392
+
+JOHANN SEBASTIAN BACH        12342              15              80            1675             268               67             1340
+
+JOSEPH HAYDN                 23452              19              80            1530             244               61             1225
+
+GEORG FRIEDRICH HANDEL       22131              10              80             969             155               38              776
+
+EDWARD ELGAR                 65411              22              80            2645             423              105             2117
+
+NIKOLAI RIMSKY-KORSAKOV      44378              23              28             680             108               27              545
+
+CLAUDE DEBUSSY               99855              22              80            1739             278               69             1392
+
+ANTONIN DVORAK               13346              15              80            1675             268               67             1340
+
+THOMAS TALLIS                24457              19              80            1530             244               61             1225
+
+RALPH VAUGHAN WILLIAMS       22538              10              80             969             155               38              776
+
+RICHARD WAGNER               11477              22              80            2645             423              105             2117
+
+FREDERIC CHOPIN              17777              23              28             680             108               27              545
+
+JOAN TOWER                   99211              22              80            1739             278               69             1392
+
+*** EXECUTION TIME =    0.001 SECS.       773 INSTRUCTIONS EXECUTED -   773000 INSTRUCTIONS/SEC ***                                 
+
+*** AM004 - NORMAL USER TERMINATION BY RETURN ***                                                                                   
+
